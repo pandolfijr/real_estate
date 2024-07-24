@@ -52,8 +52,8 @@ class PeopleServiceImpl implements PeopleService
                 if (!$search_people->isSuccess())
                     return Result::error(
                         new ErrorApplication(
-                            'PeopleService > saveLocator',
-                            'Erro ao criar pessoa',
+                            'PeopleService > getLocatorByIdPeople',
+                            'Erro ao localizar pessoa',
                             400,
                         )
                     );
@@ -72,8 +72,8 @@ class PeopleServiceImpl implements PeopleService
                 if (!$result_people->isSuccess())
                     return Result::error(
                         new ErrorApplication(
-                            'PeopleService > saveLocator',
-                            'Erro ao criar pessoa',
+                            'PeopleService > saveLocator -> savePeople',
+                            'Erro ao salvar pessoa: ' . $result_people->getError()->getMessage(),
                             400,
                         )
                     );
@@ -147,6 +147,13 @@ class PeopleServiceImpl implements PeopleService
     {
         return $this->peopleRepository->getPeopleByCpf($cpf);
     }
+
+    public function getPeopleByCnpj(string $cnpj): Result
+    {
+        return $this->peopleRepository->getPeopleByCnpj($cnpj);
+    }
+
+
     public function deleteLocator(string $id_locator): Result
     {
         return $this->peopleRepository->deleteLocator($id_locator);

@@ -158,13 +158,29 @@ class PeopleRepositoryImpl implements PeopleRepository
     public function getPeopleByCpf(string $cpf): Result
     {
         try {
-            $people = People::select('id', 'name', 'surname', 'cpf', 'rg', 'cellphone', 'email', 'address', 'complement', 'number', 'marital_status', 'birth_date', 'district', 'id_city', 'cep')->where('cpf', $cpf)->first();
+            $people = People::select('id', 'name', 'surname', 'cpf', 'rg', 'cellphone', 'email', 'address', 'complement', 'number', 'marital_status', 'birth_date', 'district', 'id_city', 'cep', 'cnpj')->where('cpf', $cpf)->first();
             return Result::success($people);
         } catch (Exception $e) {
             return Result::error(
                 new ErrorApplication(
                     'PeopleRepositoryImpl > getPeopleById',
                     'Erro ao buscar pessoa por CPF: ' . $e->getMessage(),
+                    500,
+                )
+            );
+        }
+    }
+
+    public function getPeopleByCnpj(string $cnpj): Result
+    {
+        try {
+            $people = People::select('id', 'name', 'surname', 'cpf', 'rg', 'cellphone', 'email', 'address', 'complement', 'number', 'marital_status', 'birth_date', 'district', 'id_city', 'cep', 'cnpj')->where('cnpj', $cnpj)->first();
+            return Result::success($people);
+        } catch (Exception $e) {
+            return Result::error(
+                new ErrorApplication(
+                    'PeopleRepositoryImpl > getPeopleByCnpj',
+                    'Erro ao buscar pessoa por CNPJ: ' . $e->getMessage(),
                     500,
                 )
             );

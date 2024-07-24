@@ -86,4 +86,20 @@ class PeopleController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+    public function getPeopleByCnpj(Request $request): JsonResponse
+    {
+        try {
+            $input = $request->all();
+            $result = $this->peopleService->getPeopleByCnpj($input['cnpj']);
+            if(!$result->success())
+                return response()->json(['message' => $result->getError()->getMessage()], $result->getError()->getCode());
+
+            $people = $result->getData();
+
+            return response()->json(['people' => $people], 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
 }

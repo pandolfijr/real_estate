@@ -32,6 +32,7 @@ interface PeopleService
     public function restoreGuarantor(string $id_user): Result;
 
     public function getPeopleByCpf(string $cpf): Result;
+    public function getPeopleByCnpj(string $cnpj): Result;
 }
 
 

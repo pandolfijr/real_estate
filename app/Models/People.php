@@ -18,7 +18,7 @@ class People extends Model
     protected $table = 'people';
 
     protected $fillable = [
-        'id', 'name', 'surname', 'cpf', 'rg', 'cellphone', 'email', 'address', 'complement', 'number', 'marital_status', 'birth_date', 'district', 'id_city', 'cep', 'created_at','profession'
+        'id', 'name', 'surname', 'cpf', 'rg', 'cellphone', 'email', 'address', 'complement', 'number', 'marital_status', 'birth_date', 'district', 'id_city', 'cep', 'created_at','profession', 'cnpj'
     ];
 
     protected $primaryKey = 'id';

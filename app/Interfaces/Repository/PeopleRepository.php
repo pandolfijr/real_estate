@@ -33,6 +33,7 @@ interface PeopleRepository
     public function imageExists(string $id): ?bool;
     public function saveImage(string $id_property, string $reference, string $filename, string $type): Result;
     public function getPeopleByCpf(string $cpf): Result;
+    public function getPeopleByCnpj(string $cnpj): Result;
     public function savePeople(array $input): Result;
     public function getLocatorByIdPeople(string $cpf): Result;
     public function getGuarantorByIdPeople(string $cpf): Result;

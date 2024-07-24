@@ -324,6 +324,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/reports', App\Http\Controllers\ReportController::class);
 
     Route::get('/people/{id}/get-by-cpf',[App\Http\Controllers\PeopleController::class, 'getPeopleByCpf']);
+    Route::get('/people/{id}/get-by-cnpj',[App\Http\Controllers\PeopleController::class, 'getPeopleByCnpj']);
     Route::get('/receipt/{id}/{view}', [App\Http\Controllers\ReceiptController::class, 'generate'])->name('generate');
 
 });
