@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import url('dashboard/assets/fonts/family.css');
+
+// Importar arquivos CSS de plugins e estilos
+@import url('dashboard/assets/fonts/ionicons.min.css');
+@import url('dashboard/assets/plugins/fontawesome-free/css/all.min.css');
+@import url('dashboard/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css');
+@import url('dashboard/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css');
+@import url('dashboard/assets/plugins/jqvmap/jqvmap.min.css');
+@import url('dashboard/assets/dist/css/adminlte.min.css');
+@import url('dashboard/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css');
+@import url('dashboard/assets/plugins/daterangepicker/daterangepicker.css');
+@import url('dashboard/assets/plugins/summernote/summernote-bs4.min.css');

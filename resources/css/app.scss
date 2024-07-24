@@ -1,0 +1,20 @@
+// app.scss
+
+// Importar Bootstrap CSS
+@import "vendor/bootstrap";
+
+// Importar Bootstrap Icons
+@import "vendor/bootstrap-icons";
+
+// Importar AOS CSS
+@import "vendor/aos";
+
+// Importar GLightbox CSS
+@import "vendor/glightbox";
+
+// Importar Swiper CSS
+@import "vendor/swiper";
+
+// Seus próprios estilos
+@import "variables-orange";
+@import "main";
