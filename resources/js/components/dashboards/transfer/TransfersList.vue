@@ -20,6 +20,8 @@
                                     <th class="md='auto'">Data Recebimento</th>
                                     <th class="md='auto'">Valor Repasse Estimado</th>
                                     <th class="md='auto'">Valor Taxa Administrativa</th>
+                                    <th class="md='auto'">Ações</th>
+                                    <th class="md='auto'">Recibo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,6 +54,16 @@
                                             style="margin-top: -0.5em;" title="Nenhuma Ação" disabled>
                                             <i class="fas fa-hand-paper"></i>
                                         </button>
+                                    </td>
+                                    <td v-if="installment.date_received != null">
+                                        <a :href="'/receipt/' + installment.id + '/transfer'" target="_blank" class="small-box-footer">
+                                            <button type="button" class="btn btn-outline-info" title="Gerar Recibo" style="margin-top: -0.5em;">
+                                                <i class="fas fa-print"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td v-else>
+
                                     </td>
                                 </tr>
                             </tbody>

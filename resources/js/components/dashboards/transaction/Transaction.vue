@@ -11,10 +11,10 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <label for="inputContractStatus">Status do Contrato </label>
+                                <label for="inputContractStatus">Status do Contrato</label>
                                 <div v-if="transaction.id == ''" class="form-control" readonly> {{
                                     contract_status[transaction.contract_status] }}</div>
-                                <select v-else class="custom-select" id="inputContractStatus" name="contract_status"
+                                <select v-else class="custom-select" id="inputContractStatus" name="contract_status" :disabled="transaction.termination_contract != null"
                                     v-model="transaction.contract_status">
                                     <option value="">Selecione... </option>
                                     <option v-for="(value, key) in action_contract_status" :key="key" :value="key"
@@ -179,10 +179,10 @@
                         </div>
                         <div v-if="transaction.transaction_type == 2" class="col-sm-3">
                             <div class="form-group">
-                                <label for="inputContractEndDate">Término do Contrato</label>
+                                <label for="inputContractEndDate">Término Previsto para o Contrato</label>
                                 <input type="date" class="form-control" id="inputContractEndDate"
                                     name="contract_end_date" v-model="transaction.contract_end_date"
-                                    :disabled="edit || transaction.contract_start_date == ''">
+                                    :disabled="edit || transaction.contract_start_date == '' || transaction.contract_status == 1">
                             </div>
                         </div>
                     </div>
@@ -425,8 +425,24 @@
                             </div>
                         </div>
 
-                    </div>
 
+                    </div>
+                    <div class="row" v-if="transaction.contract_status == 3 || transaction.contract_status == 4">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="inputKeysReturn">Data de Encerramento de Contrato</label>
+                                <input type="date" class="form-control" id="inputKeysReturn"
+                                    name="keys_return" v-model="transaction.keys_return">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="inputTerminationContract">Entrega das Chaves</label>
+                                <input type="date" class="form-control" id="inputTerminationContract"
+                                    name="termination_contract" v-model="transaction.termination_contract">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-footer"></div>
@@ -549,6 +565,8 @@ export default {
                 id_keys: '',
                 id_broker: '',
                 id_condo: '',
+                keys_return: '',
+                termination_contract: '',
             },
             total_remaining_installments: 0,
             properties: {
@@ -861,7 +879,9 @@ export default {
                 generate_penalty: generate_penalty,
                 total_remaining_installments: this.total_remaining_installments,
                 id_property: this.transaction.property.id,
-                id_renter: this.transaction.id_renter
+                id_renter: this.transaction.id_renter,
+                keys_return: this.transaction.keys_return,
+                termination_contract: this.transaction.termination_contract
             })
                 .then(response => {
                     Swal.fire({
@@ -898,7 +918,7 @@ export default {
         treatValues() {
             if (this.transaction.property_value != '' && this.setting.administrative_tax != '') {
                 this.transaction.administrative_tax = (parseFloat(this.transaction.property_value ? this.transaction.property_value : 0)
-                  + parseFloat(this.transaction.iptu_value ? this.transaction.iptu_value : 0)) * (this.setting.administrative_tax / 100).toFixed(2);
+                    + parseFloat(this.transaction.iptu_value ? this.transaction.iptu_value : 0)) * (this.setting.administrative_tax / 100).toFixed(2);
                 let final_value = parseFloat(this.transaction.property_value) +
                     parseFloat(this.transaction.penalty_value ? this.transaction.penalty_value : 0) +
                     parseFloat(this.transaction.interest_month_value ? this.transaction.interest_month_value : 0) +

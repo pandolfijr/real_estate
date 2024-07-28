@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="col-md-12">
-            <h2>Transações</h2>
+            <h2>Contratos</h2>
             <search :route="'transaction'" @search="searchParams => getTransactions(searchParams)"></search>
             <div class="card card-primary">
                 <div class="card-header">
@@ -19,7 +19,8 @@
                                     <th class="md='auto'">Status do Contrato</th>
                                     <th class="md='auto'">Data Inicial</th>
                                     <th class="md='auto'">Data Final</th>
-                                    <th class="md='auto'"></th>
+                                    <th class="md='auto'">Ação</th>
+                                    <th class="md='auto'">Recibo Chaves</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +44,15 @@
                                                 <i class="fas fa-solid fa-eye"></i> </button>
                                         </router-link>
                                     </td>
+                                    <td v-if="transaction.keys_return != null">
+                                        <a :href="'/receipt/' + transaction.id + '/keys_return'" target="_blank" class="small-box-footer">
+                                            <button type="button" class="btn btn-outline-info" title="Gerar Recibo" style="margin-top: -0.5em;">
+                                                <i class="fas fa-print"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td v-else></td>
+
                                 </tr>
                             </tbody>
                         </table>

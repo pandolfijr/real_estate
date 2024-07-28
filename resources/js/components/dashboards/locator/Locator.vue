@@ -350,6 +350,7 @@ export default {
                     district: "",
                     id_city: "",
                     profession: "",
+                    cnpj: "",
                 },
                 people_exists: false,
             },

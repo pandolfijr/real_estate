@@ -216,7 +216,7 @@ class TransactionRepositoryImpl implements TransactionRepository
     public function getTransactionById(string $id): Result
     {
         try {
-            $transaction = Transaction::with(['locator', 'renter', 'guarantor', 'keys', 'broker', 'property', 'installments'])->where('id', $id)->withTrashed()->first();
+            $transaction = Transaction::with(['locator', 'renter', 'guarantor', 'keys', 'broker', 'property.city.state', 'installments'])->where('id', $id)->withTrashed()->first();
             return Result::success($transaction);
         } catch (Exception $e) {
             return Result::error(

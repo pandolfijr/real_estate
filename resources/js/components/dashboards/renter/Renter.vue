@@ -443,6 +443,7 @@ export default {
                     district: "",
                     id_city: "",
                     profession: "",
+                    cnpj: "",
                 },
             },
             cities: {},

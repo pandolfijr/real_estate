@@ -51,7 +51,7 @@ class Transaction extends Model
     protected $table = 'transactions';
 
     protected $fillable = [
-        'id', 'contract_start_date', 'contract_end_date', 'contract_status', 'due_day', 'first_due_date', 'generation_date', 'transaction_type', 'modality', 'responsible_insurance', 'responsible_iptu', 'type_of_charge', 'observations', 'witness', 'insurance_number', 'status_transact', 'security_deposit', 'penalty_value', 'interest_month_value', 'administrative_tax', 'other_transfers', 'property_value', 'condo_value', 'iptu_value', 'final_value', 'number_installments', 'id_locator', 'id_renter', 'id_first_guarantor', 'id_second_guarantor', 'id_keys', 'id_broker', 'deleted_at', 'created_at', 'updated_at', 'id_property', 'id_condo', 'insurance_value'
+        'id', 'contract_start_date', 'contract_end_date', 'contract_status', 'due_day', 'first_due_date', 'generation_date', 'transaction_type', 'modality', 'responsible_insurance', 'responsible_iptu', 'type_of_charge', 'observations', 'witness', 'insurance_number', 'status_transact', 'security_deposit', 'penalty_value', 'interest_month_value', 'administrative_tax', 'other_transfers', 'property_value', 'condo_value', 'iptu_value', 'final_value', 'number_installments', 'id_locator', 'id_renter', 'id_first_guarantor', 'id_second_guarantor', 'id_keys', 'id_broker', 'deleted_at', 'created_at', 'updated_at', 'id_property', 'id_condo', 'insurance_value', 'keys_return', 'termination_contract'
     ];
 
     protected $primaryKey = 'id';
